@@ -76,6 +76,7 @@ namespace global_gauss {
 				}
 				dim3 blocks(block_num);
 				dim3 threads(BLOCK_X_SIZE, BLOCK_Y_SIZE);
+				//size_t sharedMemSize = sizeof(float) * BLOCK_X_SIZE * THREAD_X_SIZE * BLOCK_Y_SIZE * THREAD_Y_SIZE;
 				solve_kernel<<<blocks, threads>>>(system, k_gl, t);
 			}
 		}
@@ -102,9 +103,9 @@ namespace global_gauss {
 
 	*/
 
-	__global__ void solve_kernel(DeviceSystem<float> a, int k_gl, int t) {
+	__global__ void solve_kernel(DeviceSystem<float> s, int k_gl, int t) {
 
-		int N = a.dim;
+		int N = s.dim;
 		int start_k = k_gl*R1;
 		int Q2 = dev_div_ceiling(N-1 - start_k, R2*THREAD_X_SIZE);
 		int Q3 = dev_div_ceiling(N - start_k, R3*THREAD_Y_SIZE);
@@ -116,17 +117,41 @@ namespace global_gauss {
 		int i_block = ri_block + di_block;
 		int j_block = rj_block + dj_block;
 	
-		int i_gl = (i_block * BLOCK_X_SIZE + threadIdx.x) * THREAD_X_SIZE + (start_k + 1);
-		int j_gl = (j_block * BLOCK_Y_SIZE + threadIdx.y) * THREAD_Y_SIZE + (start_k + 1);
+		const int i_gl = (i_block * BLOCK_X_SIZE + threadIdx.x) * THREAD_X_SIZE + (start_k + 1);
+		const int j_gl = (j_block * BLOCK_Y_SIZE + threadIdx.y) * THREAD_Y_SIZE + (start_k + 1);
 
-		for(int k = start_k; k < min(start_k+R1, N-1); k++) {
-			for (int i = max(i_gl, k+1); i < min(i_gl + THREAD_X_SIZE, N); i++) {
-				float l = a[i][k] / a[k][k];
-				for(int j = max(j_gl, k+1); j < min(j_gl + THREAD_Y_SIZE, N+1); j++) {
-					a[i][j] = a[i][j] - l * a[k][j];
+		const int block_i_gl = i_block * BLOCK_X_SIZE * THREAD_X_SIZE + (start_k + 1);
+		const int block_j_gl = j_block * BLOCK_Y_SIZE * THREAD_Y_SIZE + (start_k + 1);
+
+		const int first_ai = threadIdx.x * THREAD_X_SIZE;
+		const int first_aj = threadIdx.y * THREAD_Y_SIZE;
+
+		const int sharedWidth = BLOCK_X_SIZE*THREAD_X_SIZE;
+		const int sharedHeight = BLOCK_Y_SIZE*THREAD_Y_SIZE;
+		__shared__ float a[sharedHeight][sharedWidth];
+		for (int ai = first_ai, si = i_gl; si < min(i_gl + THREAD_X_SIZE, N); ai++, si++) {
+			for(int aj = first_aj, sj = j_gl; sj < min(j_gl + THREAD_Y_SIZE, N+1); aj++, sj++) {
+				a[ai][aj] = s[si][sj];
+			}
+		}
+
+		for(int ks = start_k, kia = ks - block_i_gl, kja = ks - block_j_gl; ks < min(start_k+R1, N-1); ks++, kia++, kja++) {
+			for (int is = max(i_gl, ks+1), ia = is - block_i_gl; is < min(i_gl + THREAD_X_SIZE, N); is++, ia++) {
+				float aik = kja >= 0 && kja < sharedWidth ? a[ia][kja] : s[is][ks];
+				float akk = kja >= 0 && kja < sharedWidth && kia >= 0 && kia < sharedHeight ? a[kia][kja] : s[ks][ks];
+				float l = aik / akk;
+				for(int js = max(j_gl, ks+1), ja = js - block_j_gl; js < min(j_gl + THREAD_Y_SIZE, N+1); js++, ja++) {
+					float akj = ks < block_i_gl ? s[ks][js] : a[kia][ja];
+					a[ia][ja] = a[ia][ja] - l * akj;
 				}
 			}
 			__syncthreads();
+		}
+
+		for (int ai = first_ai, si = i_gl; si < min(i_gl + THREAD_X_SIZE, N); ai++, si++) {
+			for(int aj = first_aj, sj = j_gl; sj < min(j_gl + THREAD_Y_SIZE, N+1); aj++, sj++) {
+				s[si][sj] = a[ai][aj];
+			}
 		}
 
 	}
