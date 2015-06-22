@@ -16,6 +16,9 @@
     <Filter Include="test">
       <UniqueIdentifier>{e35c3bc8-a407-4196-ae75-2627aad127ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\deprecated">
+      <UniqueIdentifier>{2546e590-00b5-4a64-9dc9-b0a2a464056a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="matrix.h">
@@ -36,18 +39,24 @@
     <ClCompile Include="test2.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="test3.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="vectorSum.cu">
       <Filter>example</Filter>
     </CudaCompile>
     <CudaCompile Include="GlobalGauss2D.cu">
-      <Filter>source</Filter>
+      <Filter>source\deprecated</Filter>
     </CudaCompile>
     <CudaCompile Include="TextureGauss2D.cu">
+      <Filter>source\deprecated</Filter>
+    </CudaCompile>
+    <CudaCompile Include="GlobalGauss3D1.cu">
       <Filter>source</Filter>
     </CudaCompile>
-    <CudaCompile Include="GlobalGauss3D.cu">
+    <CudaCompile Include="GlobalGauss3D2.cu">
       <Filter>source</Filter>
     </CudaCompile>
   </ItemGroup>

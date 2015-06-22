@@ -18,8 +18,10 @@ typedef unsigned int dev_size;
 		cudaEventSynchronize(stop); \
 		float dt; \
 		cudaEventElapsedTime(&dt, start, stop); \
-		printf("Elapsed Time: %3.1f ms\n\n", dt); \
+		printf("Elapsed Time: %3.1f ms\n", dt); \
 	}
+
+#define DIV_UP(a, b) (a + b - 1) / (b)
 
 inline int div_ceiling(const int a, const int b) {
 	return (a + b - 1) / b;
