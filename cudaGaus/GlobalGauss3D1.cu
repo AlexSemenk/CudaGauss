@@ -38,7 +38,6 @@ namespace global_gauss1 {
 	 |		    :s|_______|_______|_______|_______|
 	 |          :t|       |       |       |       |
 	 |__________:_|_______|_______|_______|_______|
-
 	*/
 
 	__global__ void solve_kernel(DeviceSystem<float> system, int k_gl, int t);
@@ -89,10 +88,8 @@ namespace global_gauss1 {
 	}
 
 	/* 
-
 	     ri - relatiove i position
 		 di - i position deviation
-
 		 di = 0                       di = 1                       di = 4
 		 dj = 0                       dj = 0                       dj = 1
 		 ______________               ______________               ______________
@@ -102,7 +99,6 @@ namespace global_gauss1 {
 		|____|____|____|             |####|____|____|  ri=2 rj=0  |____|____|____|
 		|____|____|____|             |____|____|____|             |____|____|####|  ri=0 rj=1
 		|____|____|____|             |____|____|____|             |____|####|____|  ri=1 rj=0
-
 		 _______________
 		|	|   | b |   |
 		|___|___|___|___|
@@ -110,7 +106,6 @@ namespace global_gauss1 {
 		|_c_|___|_a_|___|
 		|___|___|___|___|
 		|___|___|___|___|
-
 	*/
 
 	__global__ void solve_kernel(DeviceSystem<float> s, int k_gl, int t) {

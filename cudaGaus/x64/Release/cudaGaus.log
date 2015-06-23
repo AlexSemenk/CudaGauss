@@ -1,18 +1,32 @@
-﻿Build started 22.06.2015 11:51:33.
+﻿Build started 23.06.2015 23:35:12.
      1>Project "D:\workspace\cuda\math\cudaGaus\cudaGaus.vcxproj" on node 2 (Build target(s)).
      1>AddCudaCompileDeps:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /DWIN64 /DNDEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" /I. /FIcuda_runtime.h /c D:\workspace\cuda\math\cudaGaus\GlobalGauss3D1.cu 
+       AddCudaCompileDeps:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /DWIN64 /DNDEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" /I. /FIcuda_runtime.h /c D:\workspace\cuda\math\cudaGaus\GlobalGauss3D3.cu 
        CudaBuild:
          Compiling CUDA source file GlobalGauss3D1.cu...
-         cmd.exe /C "C:\Users\Alex\AppData\Local\Temp\tmp646159c1be234898a255395767fc583e.cmd"
+         cmd.exe /C "C:\Users\Alex\AppData\Local\Temp\tmp7b50d2b3ff26424e9ba09cfd42d843d6.cmd"
          "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -DWIN32 -DWIN64 -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MD  " -o x64\Release\GlobalGauss3D1.cu.obj "D:\workspace\cuda\math\cudaGaus\GlobalGauss3D1.cu"
          
          D:\workspace\cuda\math\cudaGaus>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -DWIN32 -DWIN64 -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MD  " -o x64\Release\GlobalGauss3D1.cu.obj "D:\workspace\cuda\math\cudaGaus\GlobalGauss3D1.cu" 
          GlobalGauss3D1.cu
+       CudaBuild:
+         Compiling CUDA source file GlobalGauss3D3.cu...
+         cmd.exe /C "C:\Users\Alex\AppData\Local\Temp\tmp8595687c557b48e183b8cace4f325630.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -DWIN32 -DWIN64 -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MD  " -o x64\Release\GlobalGauss3D3.cu.obj "D:\workspace\cuda\math\cudaGaus\GlobalGauss3D3.cu"
+         
+         D:\workspace\cuda\math\cudaGaus>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -DWIN32 -DWIN64 -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MD  " -o x64\Release\GlobalGauss3D3.cu.obj "D:\workspace\cuda\math\cudaGaus\GlobalGauss3D3.cu" 
+     1>D:/workspace/cuda/math/cudaGaus/GlobalGauss3D3.cu(109): warning : variable "Q2" was declared but never referenced
+     1>D:/workspace/cuda/math/cudaGaus/GlobalGauss3D3.cu(110): warning : variable "Q3" was declared but never referenced
+     1>D:/workspace/cuda/math/cudaGaus/GlobalGauss3D3.cu(109): warning : variable "Q2" was declared but never referenced
+     1>D:/workspace/cuda/math/cudaGaus/GlobalGauss3D3.cu(110): warning : variable "Q3" was declared but never referenced
+         GlobalGauss3D3.cu
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\workspace\cuda\math\x64\Release\cudaGauss.exe" /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\lib\x64" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\workspace\cuda\math\x64\Release\cudaGauss.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\workspace\cuda\math\x64\Release\cudaGauss.lib" /MACHINE:X64 x64\Release\GlobalGauss3D2.cu.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\workspace\cuda\math\x64\Release\cudaGauss.exe" /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\lib\x64" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\workspace\cuda\math\x64\Release\cudaGauss.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\workspace\cuda\math\x64\Release\cudaGauss.lib" /MACHINE:X64 x64\Release\GlobalGauss3D1.cu.obj
+         x64\Release\GlobalGauss3D2.cu.obj
          x64\Release\GlobalGauss2D.cu.obj
-         x64\Release\GlobalGauss3D1.cu.obj
+         x64\Release\GlobalGauss3D3.cu.obj
          x64\Release\TextureGauss2D.cu.obj
          x64\Release\vectorSum.cu.obj
          x64\Release\cuda_def.obj
@@ -37,4 +51,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:25.89
+Time Elapsed 00:00:28.36

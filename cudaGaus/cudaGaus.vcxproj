@@ -153,9 +153,10 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <CudaCompile Include="GlobalGauss3D1.cu" />
     <CudaCompile Include="GlobalGauss3D2.cu" />
     <CudaCompile Include="GlobalGauss2D.cu" />
-    <CudaCompile Include="GlobalGauss3D1.cu" />
+    <CudaCompile Include="GlobalGauss3D3.cu" />
     <CudaCompile Include="TextureGauss2D.cu" />
     <CudaCompile Include="vectorSum.cu" />
   </ItemGroup>

@@ -15,12 +15,12 @@ void test(void solve(System<float>& a), int n) {
 	} catch (const char* exc) {
 		printf("Exception: %s\n", exc);
 	}
-	//try {
-	//	test1(solve, n);
-	//	printf("test 1 passed with n = %d\n\n", n);
-	//} catch (const char* exc) {
-	//	printf("Exception: %s\n", exc);
-	//}
+	try {
+		test1(solve, n);
+		printf("test 1 passed with n = %d\n\n", n);
+	} catch (const char* exc) {
+		printf("Exception: %s\n", exc);
+	}
 }
 
 class MatrixTest  {

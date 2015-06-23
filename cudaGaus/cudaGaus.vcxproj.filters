@@ -53,10 +53,13 @@
     <CudaCompile Include="TextureGauss2D.cu">
       <Filter>source\deprecated</Filter>
     </CudaCompile>
-    <CudaCompile Include="GlobalGauss3D1.cu">
+    <CudaCompile Include="GlobalGauss3D2.cu">
       <Filter>source</Filter>
     </CudaCompile>
-    <CudaCompile Include="GlobalGauss3D2.cu">
+    <CudaCompile Include="GlobalGauss3D3.cu">
+      <Filter>source</Filter>
+    </CudaCompile>
+    <CudaCompile Include="GlobalGauss3D1.cu">
       <Filter>source</Filter>
     </CudaCompile>
   </ItemGroup>
