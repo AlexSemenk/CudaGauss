@@ -135,8 +135,8 @@ namespace global_gauss2 {
 
 		const int first_ai = threadIdx.x * THREAD_X_SIZE;
 		const int first_aj = threadIdx.y * THREAD_Y_SIZE;
-		const int aSizeX = BLOCK_Y_SIZE*THREAD_Y_SIZE;
-		const int aSizeY = BLOCK_X_SIZE*THREAD_X_SIZE;
+		const int aSizeX = BLOCK_X_SIZE*THREAD_X_SIZE;
+		const int aSizeY = BLOCK_Y_SIZE*THREAD_Y_SIZE;
 		__shared__ float a[aSizeX][aSizeY];	// main block for read, write.
 		for (int ai = first_ai, si = i_gl; si < min(i_gl + THREAD_X_SIZE, N); ai++, si++) {
 			for(int aj = first_aj, sj = j_gl; sj < min(j_gl + THREAD_Y_SIZE, N+1); aj++, sj++) {
